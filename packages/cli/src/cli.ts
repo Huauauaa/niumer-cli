@@ -1,8 +1,4 @@
-import {
-  countRepositories,
-  formatCountReport,
-  type CountOptions
-} from "./count.js";
+import { countRepositories, formatCountReport, type CountOptions } from "./count.js";
 
 interface ParsedArgs {
   help: boolean;

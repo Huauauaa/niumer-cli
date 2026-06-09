@@ -82,9 +82,7 @@ export function parseTimerange(timerange: string): DateRange {
   const parts = timerange.split(/\.\.|,|:/).map((part) => part.trim());
 
   if (parts.length !== 2 || !parts[0] || !parts[1]) {
-    throw new Error(
-      "Invalid timerange. Use start..end, for example 2026-01-01..2026-12-31."
-    );
+    throw new Error("Invalid timerange. Use start..end, for example 2026-01-01..2026-12-31.");
   }
 
   return {
@@ -115,9 +113,7 @@ export function resolveAuthor(author: string | undefined, cwd: string): string {
     return result.stdout;
   }
 
-  throw new Error(
-    "Missing author. Pass --author or configure git user.name for this environment."
-  );
+  throw new Error("Missing author. Pass --author or configure git user.name for this environment.");
 }
 
 function getRepositoryRoot(candidate: string): string | null {
@@ -154,15 +150,12 @@ export function discoverRepositories(cwd: string): RepositoryInfo[] {
     });
   }
 
-  return [...repositories.values()].sort((left, right) =>
-    left.name.localeCompare(right.name)
-  );
+  return [...repositories.values()].sort((left, right) => left.name.localeCompare(right.name));
 }
 
-export function summarizeNumstat(output: string): Pick<
-  RepositoryCount,
-  "deletions" | "filesChanged" | "insertions" | "totalChanged"
-> {
+export function summarizeNumstat(
+  output: string
+): Pick<RepositoryCount, "deletions" | "filesChanged" | "insertions" | "totalChanged"> {
   let deletions = 0;
   let filesChanged = 0;
   let insertions = 0;
@@ -197,11 +190,7 @@ function countRepository(
   author: string,
   range: DateRange
 ): RepositoryCount {
-  const commonArgs = [
-    `--author=${author}`,
-    `--since=${range.since}`,
-    `--until=${range.until}`
-  ];
+  const commonArgs = [`--author=${author}`, `--since=${range.since}`, `--until=${range.until}`];
   const commits = Number.parseInt(
     runGitOrThrow(["rev-list", "--count", ...commonArgs, "HEAD"], repository.path),
     10
@@ -257,17 +246,12 @@ export function formatCountReport(report: CountReport): string {
   ]);
   const headers = ["Repository", "Commits", "Files", "Inserted", "Deleted", "Total"];
   const widths = headers.map((header, index) =>
-    Math.max(
-      header.length,
-      ...rows.map((row) => String(row[index]).length)
-    )
+    Math.max(header.length, ...rows.map((row) => String(row[index]).length))
   );
   const table = [
     headers.map((header, index) => pad(header, widths[index])).join("  "),
     widths.map((width) => "-".repeat(width)).join("  "),
-    ...rows.map((row) =>
-      row.map((cell, index) => pad(cell, widths[index])).join("  ")
-    )
+    ...rows.map((row) => row.map((cell, index) => pad(cell, widths[index])).join("  "))
   ];
   const totals = report.repositories.reduce(
     (total, repository) => ({
