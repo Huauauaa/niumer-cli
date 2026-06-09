@@ -1,8 +1,8 @@
 import {
   countRepositories,
   formatCountReport,
-  type CountOptions
-} from "./count.js";
+  type CountOptions,
+} from './count.js';
 
 interface ParsedArgs {
   help: boolean;
@@ -30,10 +30,14 @@ Examples:
   niumer count --author "Jane Doe" --since 2026-01-01 --until 2026-03-31
 `;
 
-function readValue(args: string[], index: number, option: string): [string, number] {
+function readValue(
+  args: string[],
+  index: number,
+  option: string,
+): [string, number] {
   const next = args[index + 1];
 
-  if (!next || next.startsWith("-")) {
+  if (!next || next.startsWith('-')) {
     throw new Error(`Missing value for ${option}.`);
   }
 
@@ -43,15 +47,15 @@ function readValue(args: string[], index: number, option: string): [string, numb
 export function parseArgs(args: string[]): ParsedArgs {
   const [command, ...rest] = args;
 
-  if (!command || command === "-h" || command === "--help") {
+  if (!command || command === '-h' || command === '--help') {
     return {
       help: true,
       json: false,
-      options: {}
+      options: {},
     };
   }
 
-  if (command !== "count") {
+  if (command !== 'count') {
     throw new Error(`Unknown command: ${command}`);
   }
 
@@ -64,45 +68,45 @@ export function parseArgs(args: string[]): ParsedArgs {
     let value = inlineValue;
 
     switch (option) {
-      case "--author":
+      case '--author':
         if (value === undefined) {
           [value, index] = readValue(rest, index, option);
         }
         options.author = value;
         break;
-      case "--cwd":
+      case '--cwd':
         if (value === undefined) {
           [value, index] = readValue(rest, index, option);
         }
         options.cwd = value;
         break;
-      case "--since":
+      case '--since':
         if (value === undefined) {
           [value, index] = readValue(rest, index, option);
         }
         options.since = value;
         break;
-      case "--timerange":
+      case '--timerange':
         if (value === undefined) {
           [value, index] = readValue(rest, index, option);
         }
         options.timerange = value;
         break;
-      case "--until":
+      case '--until':
         if (value === undefined) {
           [value, index] = readValue(rest, index, option);
         }
         options.until = value;
         break;
-      case "--json":
+      case '--json':
         json = true;
         break;
-      case "-h":
-      case "--help":
+      case '-h':
+      case '--help':
         return {
           help: true,
           json,
-          options
+          options,
         };
       default:
         throw new Error(`Unknown option: ${arg}`);
@@ -112,7 +116,7 @@ export function parseArgs(args: string[]): ParsedArgs {
   return {
     help: false,
     json,
-    options
+    options,
   };
 }
 
@@ -138,5 +142,5 @@ export function printCliError(error: unknown): void {
   const message = error instanceof Error ? error.message : String(error);
 
   console.error(`niumer: ${message}`);
-  console.error("Run `niumer --help` for usage.");
+  console.error('Run `niumer --help` for usage.');
 }

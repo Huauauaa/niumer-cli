@@ -16,14 +16,14 @@ niumer count
 
 ## 参数
 
-| 参数 | 说明 |
-| --- | --- |
-| `--author <name>` | 指定 Git author，支持 `git log --author` 可接受的匹配值。 |
-| `--timerange <start..end>` | 指定统计区间，例如 `2026-01-01..2026-06-30`。 |
-| `--since <date>` | 指定起始日期，会覆盖 `timerange` 的起始值。 |
-| `--until <date>` | 指定结束日期，会覆盖 `timerange` 的结束值。 |
-| `--cwd <path>` | 指定要扫描的目录。 |
-| `--json` | 输出 JSON，便于脚本消费。 |
+| 参数                       | 说明                                                      |
+| -------------------------- | --------------------------------------------------------- |
+| `--author <name>`          | 指定 Git author，支持 `git log --author` 可接受的匹配值。 |
+| `--timerange <start..end>` | 指定统计区间，例如 `2026-01-01..2026-06-30`。             |
+| `--since <date>`           | 指定起始日期，会覆盖 `timerange` 的起始值。               |
+| `--until <date>`           | 指定结束日期，会覆盖 `timerange` 的结束值。               |
+| `--cwd <path>`             | 指定要扫描的目录。                                        |
+| `--json`                   | 输出 JSON，便于脚本消费。                                 |
 
 ## 示例
 
