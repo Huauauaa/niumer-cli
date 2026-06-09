@@ -10,7 +10,9 @@ interface ParsedArgs {
   options: CountOptions;
 }
 
-const helpText = `niumer
+export const CLI_NAME = 'niumer';
+
+const helpText = `${CLI_NAME}
 
 Usage:
   niumer count [options]
@@ -141,6 +143,6 @@ export async function runCli(args: string[]): Promise<void> {
 export function printCliError(error: unknown): void {
   const message = error instanceof Error ? error.message : String(error);
 
-  console.error(`niumer: ${message}`);
+  console.error(`${CLI_NAME}: ${message}`);
   console.error('Run `niumer --help` for usage.');
 }

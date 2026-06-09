@@ -14,6 +14,12 @@ Niumer CLI is a pnpm monorepo that contains:
 ## Install
 
 ```bash
+npm i @harvey0379/niumer-cli -g
+```
+
+For local development:
+
+```bash
 pnpm install
 ```
 
@@ -22,7 +28,7 @@ pnpm install
 Run the CLI from source:
 
 ```bash
-pnpm --filter @niumer/cli dev -- count
+pnpm --filter @harvey0379/niumer-cli dev -- count
 ```
 
 Build all packages:

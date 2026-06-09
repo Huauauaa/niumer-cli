@@ -12,7 +12,8 @@
     "test": "pnpm -r test",
     "docs:dev": "pnpm --filter docs dev",
     "docs:build": "pnpm --filter docs build",
-    "docs:preview": "pnpm --filter docs preview"
+    "docs:preview": "pnpm --filter docs preview",
+    "publish:cli": "pnpm --filter @harvey0379/niumer-cli publish --access public --no-git-checks"
   },
   "devDependencies": {
     "@types/node": "^25.9.2",

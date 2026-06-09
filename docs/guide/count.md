@@ -2,6 +2,12 @@
 
 `niumer count` 会统计当前目录下各个 Git 仓库中指定作者在指定时间范围内的代码量。
 
+## 安装
+
+```bash
+npm i @harvey0379/niumer-cli -g
+```
+
 ## 默认行为
 
 ```bash

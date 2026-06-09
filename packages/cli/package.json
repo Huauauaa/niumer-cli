@@ -1,8 +1,10 @@
 {
-  "name": "@niumer/cli",
+  "name": "@harvey0379/niumer-cli",
   "version": "0.1.0",
   "description": "A Git author contribution counter for local repositories.",
   "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "bin": {
     "niumer": "dist/index.js"
   },
@@ -13,9 +15,32 @@
     "build": "tsc -p tsconfig.json",
     "check": "tsc -p tsconfig.json --noEmit",
     "dev": "tsx src/index.ts",
+    "prepublishOnly": "pnpm run build",
+    "publish:npm": "npm publish --access public",
     "test": "vitest run"
   },
+  "keywords": [
+    "cli",
+    "git",
+    "contribution",
+    "commit",
+    "author"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Huauauaa/niumer-cli.git",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/Huauauaa/niumer-cli/issues"
+  },
+  "homepage": "https://github.com/Huauauaa/niumer-cli#readme",
   "engines": {
     "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

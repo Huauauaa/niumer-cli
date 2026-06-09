@@ -12,9 +12,16 @@ Niumer CLI 用来统计本地多个 Git 代码仓在指定时间范围内的作�
 ## 快速开始
 
 ```bash
+npm i @harvey0379/niumer-cli -g
+niumer count
+```
+
+本地开发：
+
+```bash
 pnpm install
-pnpm --filter @niumer/cli build
-pnpm --filter @niumer/cli dev -- count
+pnpm --filter @harvey0379/niumer-cli build
+pnpm --filter @harvey0379/niumer-cli dev -- count
 ```
 
 构建后也可以直接运行：
