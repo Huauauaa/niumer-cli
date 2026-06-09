@@ -148,9 +148,9 @@ export function discoverRepositories(cwd: string): RepositoryInfo[] {
       continue;
     }
 
-    repositories.set(repositoryRoot, {
-      name: path.basename(repositoryRoot),
-      path: repositoryRoot
+    repositories.set(realCandidate, {
+      name: path.basename(realCandidate),
+      path: realCandidate
     });
   }
 
